@@ -1,4 +1,5 @@
 {
   "name": "MathGame",
-  "displayName": "MathGame"
+  "displayName": "MathGame",
+  "orientation": "portrait"
 }
