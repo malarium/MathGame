@@ -4,6 +4,10 @@
     {
       "path": "assets/fonts/Super Mario Bros..ttf",
       "sha1": "7f9663ddff6249873624897b14fd072d21d6afb6"
+    },
+    {
+      "path": "assets/fonts/SuperMario256.ttf",
+      "sha1": "e465e572fbc3b58a9ebec8d923ebe6bc6a347ac0"
     }
   ]
 }

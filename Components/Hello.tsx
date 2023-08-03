@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
 export const Hello = () => {
-  const greeting = 'App runs!';
+  const greeting = 'MAth App';
   return (
     <View>
       <Text style={styles.textStyle}>{greeting}</Text>
@@ -12,7 +12,10 @@ export const Hello = () => {
 
 const styles = StyleSheet.create({
   textStyle: {
-    fontFamily: 'Super Mario Bros.',
+    fontFamily: 'SuperMario256',
     fontSize: 40,
+    color: '#000',
+    textAlign: 'center',
+    marginTop: 20,
   },
 });
