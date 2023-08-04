@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {TaskContext} from '../Utilities/Contexts';
 
 export const Buttons = () => {
   const [result, setResult] = useState('?');
   const countArr = Array(10).fill('');
+  const taskValue = React.useContext(TaskContext);
   const buttonClicked = (value: number) => {
-    console.log(value);
     if (result.length > 4) {
       return;
     }
@@ -14,6 +15,13 @@ export const Buttons = () => {
   };
   const clearInput = () => {
     setResult('?');
+  };
+  const checkResult = () => {
+    if (taskValue?.task?.length === 2) {
+      console.log(
+        parseInt(result, 10) === taskValue?.task[0] * taskValue?.task[1],
+      );
+    }
   };
   return (
     <View style={styles.boxWrapper}>
@@ -34,7 +42,10 @@ export const Buttons = () => {
           android_ripple={{color: '#fff'}}>
           <Text style={styles.buttonText}>DEL</Text>
         </Pressable>
-        <Pressable style={styles.button} android_ripple={{color: '#fff'}}>
+        <Pressable
+          onPress={checkResult}
+          style={styles.button}
+          android_ripple={{color: '#fff'}}>
           <Text style={styles.buttonText}>OK</Text>
         </Pressable>
       </View>

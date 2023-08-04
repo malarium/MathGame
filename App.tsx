@@ -8,14 +8,15 @@ import {TaskContext} from './Utilities/Contexts';
 import {generateMathTask} from './Functionality/GenerateMathTask';
 
 function App(): JSX.Element {
-  const [task, setTask] = useState('');
+  const [task, setTask] = useState<number[] | null>(null);
 
-  const setNewTask = (newTask: string) => {
+  const setNewTask = (newTask: number[]) => {
     setTask(newTask);
   };
 
   useEffect(() => {
-    setNewTask(generateMathTask());
+    const mathTask = generateMathTask();
+    setNewTask(mathTask);
   }, []);
 
   return (
