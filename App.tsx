@@ -34,8 +34,8 @@ function App(): JSX.Element {
         <View style={styles.task}>
           <Task />
         </View>
-        <View style={styles.buttons} regenerateTask={regenerateTask}>
-          <Buttons />
+        <View style={styles.buttons}>
+          <Buttons regenerateTask={regenerateTask} />
         </View>
       </TaskContext.Provider>
     </SafeAreaView>

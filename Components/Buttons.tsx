@@ -6,7 +6,7 @@ interface IButtons {
   regenerateTask: () => void;
 }
 
-export const Buttons = (props: IButtons) => {
+export const Buttons = ({regenerateTask}: IButtons): JSX.Element => {
   const [result, setResult] = useState('?');
   const countArr = Array(10).fill('');
   const taskValue = React.useContext(TaskContext);
@@ -23,7 +23,8 @@ export const Buttons = (props: IButtons) => {
   const checkResult = () => {
     if (taskValue?.task?.length === 2) {
       if (parseInt(result, 10) === taskValue?.task[0] * taskValue?.task[1]) {
-        props.regenerateTask();
+        regenerateTask();
+        clearInput();
       } else {
         clearInput();
       }
