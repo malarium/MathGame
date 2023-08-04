@@ -32,7 +32,12 @@ export const Buttons = ({regenerateTask}: IButtons): JSX.Element => {
   };
   return (
     <View style={styles.boxWrapper}>
-      <Text style={styles.resultStyle}>{result}</Text>
+      <Text
+        adjustsFontSizeToFit={true}
+        numberOfLines={1}
+        style={styles.resultStyle}>
+        {result}
+      </Text>
       <View style={styles.buttonsWrapper}>
         {countArr.map((_e, i) => (
           <Pressable
@@ -40,20 +45,35 @@ export const Buttons = ({regenerateTask}: IButtons): JSX.Element => {
             style={styles.button}
             key={i}
             onPress={() => buttonClicked(i)}>
-            <Text style={styles.buttonText}>{i}</Text>
+            <Text
+              adjustsFontSizeToFit={true}
+              numberOfLines={1}
+              style={styles.buttonText}>
+              {i}
+            </Text>
           </Pressable>
         ))}
         <Pressable
           onPress={clearInput}
           style={styles.button}
           android_ripple={{color: '#fff'}}>
-          <Text style={styles.buttonText}>DEL</Text>
+          <Text
+            adjustsFontSizeToFit={true}
+            numberOfLines={1}
+            style={styles.buttonText}>
+            DEL
+          </Text>
         </Pressable>
         <Pressable
           onPress={checkResult}
           style={styles.button}
           android_ripple={{color: '#fff'}}>
-          <Text style={styles.buttonText}>OK</Text>
+          <Text
+            adjustsFontSizeToFit={true}
+            numberOfLines={1}
+            style={styles.buttonText}>
+            OK
+          </Text>
         </Pressable>
       </View>
     </View>
