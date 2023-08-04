@@ -11,7 +11,7 @@ export const Buttons = ({regenerateTask}: IButtons): JSX.Element => {
   const countArr = Array(10).fill('');
   const taskValue = React.useContext(TaskContext);
   const buttonClicked = (value: number) => {
-    if (result.length > 4) {
+    if (result.length > 3) {
       return;
     }
     const res = result === '?' ? `${value}` : result + `${value}`;
