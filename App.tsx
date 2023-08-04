@@ -1,24 +1,37 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
-import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
-
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {Hello} from './Components/Hello';
+import React, {useEffect, useState} from 'react';
+import {SafeAreaView, StatusBar, StyleSheet, View} from 'react-native';
 import {AppColors} from './Utilities/AppColors';
-
-console.log(Colors);
+import {Buttons} from './Components/Buttons';
+import {Piniata} from './Components/Piniata';
+import {Task} from './Components/Task';
+import {TaskContext} from './Utilities/Contexts';
+import {generateMathTask} from './Functionality/GenerateMathTask';
 
 function App(): JSX.Element {
+  const [task, setTask] = useState('');
+
+  const setNewTask = (newTask: string) => {
+    setTask(newTask);
+  };
+
+  useEffect(() => {
+    setNewTask(generateMathTask());
+  }, []);
+
   return (
     <SafeAreaView style={styles.backgroundStyle}>
       <StatusBar hidden={true} />
-      <Hello />
+      <TaskContext.Provider value={{task, setNewTask}}>
+        <View style={styles.piniata}>
+          <Piniata />
+        </View>
+        <View style={styles.task}>
+          <Task />
+        </View>
+        <View style={styles.buttons}>
+          <Buttons />
+        </View>
+      </TaskContext.Provider>
     </SafeAreaView>
   );
 }
@@ -26,6 +39,20 @@ function App(): JSX.Element {
 const styles = StyleSheet.create({
   backgroundStyle: {
     flex: 1,
+    backgroundColor: AppColors.Red,
+  },
+  piniata: {
+    flex: 2,
+    backgroundColor: AppColors.Mint,
+  },
+  task: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: AppColors.Yellow,
+  },
+  buttons: {
+    flex: 3,
+    justifyContent: 'center',
     backgroundColor: AppColors.Red,
   },
 });
