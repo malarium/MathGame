@@ -2,7 +2,11 @@ import React, {useState} from 'react';
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import {TaskContext} from '../Utilities/Contexts';
 
-export const Buttons = () => {
+interface IButtons {
+  regenerateTask: () => void;
+}
+
+export const Buttons = (props: IButtons) => {
   const [result, setResult] = useState('?');
   const countArr = Array(10).fill('');
   const taskValue = React.useContext(TaskContext);
@@ -18,9 +22,11 @@ export const Buttons = () => {
   };
   const checkResult = () => {
     if (taskValue?.task?.length === 2) {
-      console.log(
-        parseInt(result, 10) === taskValue?.task[0] * taskValue?.task[1],
-      );
+      if (parseInt(result, 10) === taskValue?.task[0] * taskValue?.task[1]) {
+        props.regenerateTask();
+      } else {
+        clearInput();
+      }
     }
   };
   return (

@@ -19,6 +19,11 @@ function App(): JSX.Element {
     setNewTask(mathTask);
   }, []);
 
+  const regenerateTask = () => {
+    const mathTask = generateMathTask();
+    setNewTask(mathTask);
+  };
+
   return (
     <SafeAreaView style={styles.backgroundStyle}>
       <StatusBar hidden={true} />
@@ -29,7 +34,7 @@ function App(): JSX.Element {
         <View style={styles.task}>
           <Task />
         </View>
-        <View style={styles.buttons}>
+        <View style={styles.buttons} regenerateTask={regenerateTask}>
           <Buttons />
         </View>
       </TaskContext.Provider>
